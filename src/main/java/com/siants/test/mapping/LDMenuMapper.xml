@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.siants.test.dao.LDMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.siants.test.model.LDMenu" >
+    <id column="NodeCode" property="nodecode" jdbcType="VARCHAR" />
+    <result column="ParentNodeCode" property="parentnodecode" jdbcType="VARCHAR" />
+    <result column="NodeLevel" property="nodelevel" jdbcType="VARCHAR" />
+    <result column="NodeName" property="nodename" jdbcType="VARCHAR" />
+    <result column="NodePinYin" property="nodepinyin" jdbcType="VARCHAR" />
+    <result column="ChildFlag" property="childflag" jdbcType="VARCHAR" />
+    <result column="NodeKey" property="nodekey" jdbcType="VARCHAR" />
+    <result column="RunScript" property="runscript" jdbcType="VARCHAR" />
+    <result column="NodeDescription" property="nodedescription" jdbcType="VARCHAR" />
+    <result column="NodeSign" property="nodesign" jdbcType="VARCHAR" />
+    <result column="NodeOrder" property="nodeorder" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    NodeCode, ParentNodeCode, NodeLevel, NodeName, NodePinYin, ChildFlag, NodeKey, RunScript, 
+    NodeDescription, NodeSign, NodeOrder
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from LDMenu
+    where NodeCode = #{nodecode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from LDMenu
+    where NodeCode = #{nodecode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.siants.test.model.LDMenu" >
+    insert into LDMenu (NodeCode, ParentNodeCode, NodeLevel, 
+      NodeName, NodePinYin, ChildFlag, 
+      NodeKey, RunScript, NodeDescription, 
+      NodeSign, NodeOrder)
+    values (#{nodecode,jdbcType=VARCHAR}, #{parentnodecode,jdbcType=VARCHAR}, #{nodelevel,jdbcType=VARCHAR}, 
+      #{nodename,jdbcType=VARCHAR}, #{nodepinyin,jdbcType=VARCHAR}, #{childflag,jdbcType=VARCHAR}, 
+      #{nodekey,jdbcType=VARCHAR}, #{runscript,jdbcType=VARCHAR}, #{nodedescription,jdbcType=VARCHAR}, 
+      #{nodesign,jdbcType=VARCHAR}, #{nodeorder,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.siants.test.model.LDMenu" >
+    insert into LDMenu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nodecode != null" >
+        NodeCode,
+      </if>
+      <if test="parentnodecode != null" >
+        ParentNodeCode,
+      </if>
+      <if test="nodelevel != null" >
+        NodeLevel,
+      </if>
+      <if test="nodename != null" >
+        NodeName,
+      </if>
+      <if test="nodepinyin != null" >
+        NodePinYin,
+      </if>
+      <if test="childflag != null" >
+        ChildFlag,
+      </if>
+      <if test="nodekey != null" >
+        NodeKey,
+      </if>
+      <if test="runscript != null" >
+        RunScript,
+      </if>
+      <if test="nodedescription != null" >
+        NodeDescription,
+      </if>
+      <if test="nodesign != null" >
+        NodeSign,
+      </if>
+      <if test="nodeorder != null" >
+        NodeOrder,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nodecode != null" >
+        #{nodecode,jdbcType=VARCHAR},
+      </if>
+      <if test="parentnodecode != null" >
+        #{parentnodecode,jdbcType=VARCHAR},
+      </if>
+      <if test="nodelevel != null" >
+        #{nodelevel,jdbcType=VARCHAR},
+      </if>
+      <if test="nodename != null" >
+        #{nodename,jdbcType=VARCHAR},
+      </if>
+      <if test="nodepinyin != null" >
+        #{nodepinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="childflag != null" >
+        #{childflag,jdbcType=VARCHAR},
+      </if>
+      <if test="nodekey != null" >
+        #{nodekey,jdbcType=VARCHAR},
+      </if>
+      <if test="runscript != null" >
+        #{runscript,jdbcType=VARCHAR},
+      </if>
+      <if test="nodedescription != null" >
+        #{nodedescription,jdbcType=VARCHAR},
+      </if>
+      <if test="nodesign != null" >
+        #{nodesign,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeorder != null" >
+        #{nodeorder,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.siants.test.model.LDMenu" >
+    update LDMenu
+    <set >
+      <if test="parentnodecode != null" >
+        ParentNodeCode = #{parentnodecode,jdbcType=VARCHAR},
+      </if>
+      <if test="nodelevel != null" >
+        NodeLevel = #{nodelevel,jdbcType=VARCHAR},
+      </if>
+      <if test="nodename != null" >
+        NodeName = #{nodename,jdbcType=VARCHAR},
+      </if>
+      <if test="nodepinyin != null" >
+        NodePinYin = #{nodepinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="childflag != null" >
+        ChildFlag = #{childflag,jdbcType=VARCHAR},
+      </if>
+      <if test="nodekey != null" >
+        NodeKey = #{nodekey,jdbcType=VARCHAR},
+      </if>
+      <if test="runscript != null" >
+        RunScript = #{runscript,jdbcType=VARCHAR},
+      </if>
+      <if test="nodedescription != null" >
+        NodeDescription = #{nodedescription,jdbcType=VARCHAR},
+      </if>
+      <if test="nodesign != null" >
+        NodeSign = #{nodesign,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeorder != null" >
+        NodeOrder = #{nodeorder,jdbcType=INTEGER},
+      </if>
+    </set>
+    where NodeCode = #{nodecode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.siants.test.model.LDMenu" >
+    update LDMenu
+    set ParentNodeCode = #{parentnodecode,jdbcType=VARCHAR},
+      NodeLevel = #{nodelevel,jdbcType=VARCHAR},
+      NodeName = #{nodename,jdbcType=VARCHAR},
+      NodePinYin = #{nodepinyin,jdbcType=VARCHAR},
+      ChildFlag = #{childflag,jdbcType=VARCHAR},
+      NodeKey = #{nodekey,jdbcType=VARCHAR},
+      RunScript = #{runscript,jdbcType=VARCHAR},
+      NodeDescription = #{nodedescription,jdbcType=VARCHAR},
+      NodeSign = #{nodesign,jdbcType=VARCHAR},
+      NodeOrder = #{nodeorder,jdbcType=INTEGER}
+    where NodeCode = #{nodecode,jdbcType=VARCHAR}
+  </update>
+</mapper>
