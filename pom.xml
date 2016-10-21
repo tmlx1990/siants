@@ -5,7 +5,7 @@
   <artifactId>siants</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>siants Maven Webapp</name>
+  <name>siants</name>
  <!--  <url>http://maven.apache.org</url> -->
   
   <properties>
