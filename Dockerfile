@@ -18,7 +18,7 @@ COPY pom.xml /root/siants
 COPY ./src /root/siants/src
 
 # mvn and move to tomcat
-RUN cd /root/siants && mvn package -Dmaven.test.skip=true && cp target/siants.war /usr/local/tomcat/webapps/ROOT.war
+RUN cd /root/siants && mvn package -Dmaven.test.skip=true && cp target/siants-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
 
 RUN chown -R 1001:0 /usr/local/tomcat && chmod -R ug+rw /usr/local/tomcat
 
